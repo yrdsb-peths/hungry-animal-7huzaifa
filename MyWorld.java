@@ -26,6 +26,10 @@ public class MyWorld extends World
         
         score = 0;
         
+        //create background
+        GreenfootImage bg = new GreenfootImage("images/background.png");
+        bg.scale(getWidth(),getHeight());
+        setBackground(bg);
 
         scoreLabel = new Label(0, 70);
         addObject(scoreLabel, 50, 50);
