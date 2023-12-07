@@ -26,5 +26,9 @@ public class GameOverWorld extends World
         Label finalScoreLabel = new Label("Score:" + score, 60);
         addObject(finalScoreLabel, getWidth()/2, getHeight()/2 + 60);
         
+        //create background
+        GreenfootImage bg = new GreenfootImage("images/gameoverBg.png");
+        bg.scale(getWidth(),getHeight());
+        setBackground(bg);
     }
 }

@@ -48,26 +48,23 @@ public class Elephant extends Actor
     
     public void act() 
     {
+        if(Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("left")){
+            if(getX() > 8){
+              move(-6);  
+            }
+            facing = "left";
+        }
         
-        if(Greenfoot.isKeyDown("a")){
-            move(-6);
-            facing = "left";
-        }
-        else if(Greenfoot.isKeyDown("d")){
-            move(6);
-            facing = "right";
-        }
-        if(Greenfoot.isKeyDown("left")){
-            move(-6);
-            facing = "left";
-        }
-        else if(Greenfoot.isKeyDown("right")){
-            move(6);
+        if(Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")){
+            if(getX() < 592){
+              move(6);  
+            }
             facing = "right";
         }
         animateElephant();
         eat();
     }
+    
     public void eat(){
         if(isTouching(Strawberry.class)){
             removeTouching(Strawberry.class);

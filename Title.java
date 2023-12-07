@@ -20,6 +20,12 @@ public class Title extends World
         addObject(titleLabel, getWidth()/2, 40);
         addObject(startLabel, getWidth()/2, 280);
         addObject(instructionsLabel, getWidth()/2, 375);
+        
+        //create background
+        GreenfootImage bg = new GreenfootImage("images/titleScreenBg.png");
+        bg.scale(getWidth(),getHeight());
+        setBackground(bg);
+        
         prepare();
     }
 
