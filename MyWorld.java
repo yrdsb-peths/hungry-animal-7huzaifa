@@ -8,47 +8,68 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    private int score = 0;
+    private static int score = 0;
     private Label scoreLabel;
+    private static int level = 1;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
     public MyWorld()
     {    
-        super(600, 400, 1); 
-        Kangaroo kanga = new Kangaroo();
-        addObject(kanga, 300, 300);
+   
+        super(600, 400, 1, false); 
+        Elephant elephant = new Elephant();
+        addObject(elephant, 300, 300);
         createStrawberry();
         
+        score = 0;
+        
+
         scoreLabel = new Label(0, 70);
         addObject(scoreLabel, 50, 50);
     }
-    public void createStrawberry()
-    {
-        Strawberry straw = new Strawberry();
-        int x = Greenfoot.getRandomNumber(600);
-        int y = 0;
-        addObject(straw, x, y);
-    }
-    public void onGameOver() {
-        Label gameOverLabel = new Label("Game Over!", 70);
-        addObject(gameOverLabel, getWidth()/2, getHeight()/2);
-        
+    
+    public void act(){
+        if(Greenfoot.getRandomNumber(500) == 60){
+            createBomb();
+        }
     }
     
+    public static int getLevel(){
+        return level;
+    } 
+
+    public void createStrawberry()
+    {
+        Strawberry strawberry = new Strawberry();
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 0;
+        addObject(strawberry, x, y);
+    }
+    public void createBomb(){
+        Bomb bomb = new Bomb();
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 0;
+        addObject(bomb, x, y);
+    }
     public void increaseScore() {
         score = score + 1;
         scoreLabel.setValue(score);
+        
+        if(score % 5 == 0){
+            level += 1;
+        }
     } 
     
-    public void gameOver(){
-    
-        Label gameOverLabel = new Label("Game Over",100);
-        
-        addObject(gameOverLabel,300,200);
-
+    public static int getScore(){
+        return score;
     }
-
-
+    
+    public void onGameOver(){
+        Label gameOverLabel = new Label("Game Over",100);
+        addObject(gameOverLabel, getWidth()/2, getHeight()/2);
+        Greenfoot.setWorld(new GameOverWorld());
+    }
 }
