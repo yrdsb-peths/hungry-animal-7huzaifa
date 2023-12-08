@@ -67,6 +67,7 @@ public class Elephant extends Actor
         }
         animateElephant();
         eat();
+        teleport();
     }
     public void eat(){
         if(isTouching(Strawberry.class)){
@@ -76,6 +77,23 @@ public class Elephant extends Actor
             world.increaseScore();
             eatingSound.play();
             score = world.getScore();
+        }
+    }
+    
+    /**
+     * Method to teleport elephant to the opposite side of the world
+     * if it goes out of bounds
+     */
+    public void teleport(){
+        //if elephant's current x-value is less than 0 - width of 
+        //elephant image, move it back to the other side of the world
+        if(this.getX() < 0 - this.getImage().getWidth()){
+            setLocation(600, getY());
+        }
+        //if the elephant's current x-value is more than 600 + width
+        //of elephant image, move it back to the other side of the world
+        if(this.getX() > (600 + this.getImage().getWidth())){
+            setLocation(0 - this.getImage().getWidth(), getY());
         }
     }
     
