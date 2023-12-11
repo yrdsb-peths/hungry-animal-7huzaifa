@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Title extends World
 {
-    Label titleLabel = new Label("Hungry Elephant", 90);
+    Label titleLabel = new Label("Hungry Elephant", 80);
     Label instructionsLabel = new Label("(Use \u2190 and \u2192 to Move)", 40);
     Label startLabel = new Label("Click to start", 50);
     
