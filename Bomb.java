@@ -13,6 +13,7 @@ public class Bomb extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int speed = 1;
+    GreenfootSound bombSound = new GreenfootSound("bomb.wav");
     public void act()
     {
         setLocation(getX(), getY() + speed);
@@ -24,6 +25,7 @@ public class Bomb extends Actor
             removeTouching(Elephant.class);
             MyWorld world = (MyWorld) getWorld();
             world.onGameOver();
+            bombSound.play();
             return;
         }
     }    
